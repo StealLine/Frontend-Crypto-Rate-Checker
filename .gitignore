@@ -1,0 +1,133 @@
+# =========================
+
+# Build results
+
+# =========================
+
+bin/
+obj/
+out/
+
+# =========================
+
+# Visual Studio
+
+# =========================
+
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+
+# Rider / VS Code
+
+# =========================
+
+.idea/
+.vscode/
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+
+# =========================
+
+# OS files
+
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+
+# NuGet
+
+# =========================
+
+*.nupkg
+*.snupkg
+packages/
+
+# якщо використовуЇш PackageReference Ч packages/ можна не ≥гнорити
+
+# але зазвичай в≥н не потр≥бен
+
+# =========================
+
+# Publish output
+
+# =========================
+
+publish/
+*.publishproj
+
+# =========================
+
+# Azure / secrets
+
+# =========================
+
+appsettings.Development.json
+appsettings.*.json
+
+# (€кщо там Ї секрети Ч краще не пушити)
+
+# =========================
+
+# IIS / local config
+
+# =========================
+
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+
+# =========================
+
+# Resharper
+
+# =========================
+
+_ReSharper*/
+*.DotSettings.user
+
+# =========================
+
+# Test results
+
+# =========================
+
+TestResults/
+
+# =========================
+
+# Coverage
+
+# =========================
+
+coverage/
+*.coverage
+*.coveragexml
+
+# =========================
+
+# Misc
+
+# =========================
+
+*.cache
+*.tmp
+*.temp
+
+
+db_hash.txt
+/Crypto_Rate_Checker/webstatic/nginx.conf

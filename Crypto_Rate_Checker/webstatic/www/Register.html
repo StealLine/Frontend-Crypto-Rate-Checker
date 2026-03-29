@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0a0a0f;
+            --surface: #111118;
+            --border: #1e1e2e;
+            --accent: #6c63ff;
+            --accent2: #ff6584;
+            --text: #e8e8f0;
+            --muted: #6b6b80;
+            --success: #4ade80;
+            --error: #f87171;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,101,132,.10) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(108,99,255,.10) 0%, transparent 60%);
+                pointer-events: none;
+            }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px 44px;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 1;
+            animation: fadeUp .5s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 36px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+            input:focus {
+                border-color: var(--accent);
+                box-shadow: 0 0 0 3px rgba(108,99,255,.15);
+            }
+
+        .strength-bar {
+            height: 3px;
+            border-radius: 2px;
+            background: var(--border);
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .strength-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width .3s, background .3s;
+            width: 0%;
+        }
+
+        .btn {
+            width: 100%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background .2s, transform .1s, opacity .2s;
+        }
+
+            .btn:hover {
+                background: #5a52e0;
+            }
+
+            .btn:active {
+                transform: scale(.98);
+            }
+
+            .btn:disabled {
+                opacity: .5;
+                cursor: not-allowed;
+            }
+
+        .alert {
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 13px;
+            margin-top: 16px;
+            display: none;
+        }
+
+            .alert.error {
+                background: rgba(248,113,113,.1);
+                color: var(--error);
+                border: 1px solid rgba(248,113,113,.2);
+            }
+
+            .alert.success {
+                background: rgba(74,222,128,.1);
+                color: var(--success);
+                border: 1px solid rgba(74,222,128,.2);
+            }
+
+            .alert.show {
+                display: block;
+                animation: fadeUp .3s ease both;
+            }
+
+        .footer {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+            .footer a {
+                color: var(--accent);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+                .footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">CryptoVault</div>
+        <p class="subtitle">Create your account</p>
+
+        <div class="field">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="satoshi" autocomplete="username">
+        </div>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="••••••••" autocomplete="new-password" oninput="checkStrength(this.value)">
+            <div class="strength-bar"><div class="strength-bar-fill" id="strengthFill"></div></div>
+        </div>
+
+        <button class="btn" id="regBtn" onclick="doRegister()">Create Account</button>
+
+        <div class="alert" id="alert"></div>
+
+        <div class="footer">
+            Already have an account? <a href="login.html">Sign in</a>
+        </div>
+    </div>
+
+    <script>
+    fetch('/api/Auth/Me').then(r => r.json()).then(d => {
+      if (d.authenticated) location.href = 'Dashboard.html';
+    });
+
+    function checkStrength(val) {
+      const fill = document.getElementById('strengthFill');
+      let score = 0;
+      if (val.length >= 8)  score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^a-zA-Z0-9]/.test(val)) score++;
+      const pct   = score * 25;
+      const color = ['#f87171','#fb923c','#facc15','#4ade80'][score - 1] || '#1e1e2e';
+      fill.style.width      = pct + '%';
+      fill.style.background = color;
+    }
+
+    async function doRegister() {
+      const btn      = document.getElementById('regBtn');
+      const username = document.getElementById('username').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      clearAlert();
+
+      if (!username || !email || !password) {
+        showAlert('Please fill in all fields.', 'error'); return;
+      }
+      if (password.length < 6) {
+        showAlert('Password must be at least 6 characters.', 'error'); return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Creating account...';
+
+      try {
+        const res  = await fetch('/api/Auth/Register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showAlert('Account created! Redirecting to login...', 'success');
+          setTimeout(() => location.href = 'login.html', 1200);
+        } else {
+          showAlert(data.message || 'Registration failed.', 'error');
+          btn.disabled = false;
+          btn.textContent = 'Create Account';
+        }
+      } catch {
+        showAlert('Network error. Please try again.', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Create Account';
+      }
+    }
+
+    function showAlert(msg, type) {
+      const el = document.getElementById('alert');
+      el.textContent = msg;
+      el.className = `alert ${type} show`;
+    }
+    function clearAlert() {
+      const el = document.getElementById('alert');
+      el.className = 'alert';
+    }
+    </script>
+</body>
+</html>

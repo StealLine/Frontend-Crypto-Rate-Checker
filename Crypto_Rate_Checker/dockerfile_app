@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+WORKDIR /app
+#  dsdsd
+COPY publish/ ./
+
+RUN mkdir secret_data
+RUN touch secret_data/db_hash.txt
+RUN apk add --no-cache curl
+
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "Crypto_Rate_Checker.dll"]

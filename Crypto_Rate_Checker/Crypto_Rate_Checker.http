@@ -1,0 +1,6 @@
+@Crypto_Rate_Checker_HostAddress = http://localhost:5133
+
+GET {{Crypto_Rate_Checker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

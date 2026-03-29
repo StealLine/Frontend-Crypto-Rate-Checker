@@ -1,0 +1,6 @@
+FROM nginx:alpine
+ 
+COPY Crypto_Rate_Checker/webstatic/nginx.conf /etc/nginx/conf.d/default.conf
+COPY Crypto_Rate_Checker/webstatic/www/ /usr/share/nginx/html/
+ 
+EXPOSE 80
